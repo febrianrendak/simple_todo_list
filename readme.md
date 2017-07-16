@@ -9,4 +9,5 @@ Assembled with Webpack and ReactJS in ES6.
 
 # RUN
 `yarn start`
-open http://localhost:8080/ in your browser
+
+open `http://localhost:8080/` in your browser.
