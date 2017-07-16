@@ -5,9 +5,8 @@ Assembled with Webpack and ReactJS in ES6.
 
 # SETUP
 * install `yarn`
-* trun `yarn install`
+* run `yarn install`
 
 # RUN
-`yarn start`
-
-open `http://localhost:8080/` in your browser.
+* `yarn start`
+* open `http://localhost:8080/` in your browser.
