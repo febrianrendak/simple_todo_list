@@ -16,7 +16,6 @@ export default class App extends React.Component {
             todoList: []
         }
 
-
         this.__handleItemFieldChange = this.__handleItemFieldChange.bind(this)
         this.__onClickSubmitItem = this.__onClickSubmitItem.bind(this)
         this.__removeItem = this.__removeItem.bind(this)
@@ -83,7 +82,7 @@ export default class App extends React.Component {
                 <div className="row">
                     <div className="col-md-6">
                         <h3>Active</h3>
-                        <List todoList={this.state.todoList.filter((item, index) => { return !item.done })} toggleMark={this.__toggleMark} removeItem={this.__removeItem} />
+                        <List todoList={this.state.todoList.filter((item) => { return !item.done })} toggleMark={this.__toggleMark} removeItem={this.__removeItem} />
                         <h3>Done</h3>
                         <List todoList={this.state.todoList.filter((item) => { return item.done })} toggleMark={this.__toggleMark} removeItem={this.__removeItem} />
                     </div>
