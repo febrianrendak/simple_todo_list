@@ -1,5 +1,6 @@
 import React from 'react';
 import List from './List.jsx';
+import Form from './Form.jsx';
 import moment from 'moment';
 
 export default class App extends React.Component {
@@ -38,25 +39,32 @@ export default class App extends React.Component {
     }
 
     __handleItemFieldChange(event) {
+        let item = Object.assign({}, this.state.item)
+        item.text = event.target.value
         this.setState({
-            item: {
-                text: event.target.value,
-                id: moment().format('x'),
-                done: false
-            }
+            item: item
         })
     }
 
     __onClickSubmitItem(event) {
         event.preventDefault()
 
+        let item = Object.assign({}, this.state.item)
+        item.id = moment().format('x')
+
         this.setState({
-            todoList: [ ...this.state.todoList, this.state.item ]
+            todoList: [ ...this.state.todoList, item ]
         })
 
-        console.log('item submitted:', this.state.item)
+        console.log('item submitted:', item)
 
-        this.setState({item: { text: '' }})
+        this.setState({
+            item: {
+                text: '',
+                id: null,
+                done: false
+            }
+        })
     }
 
     render() {
@@ -65,18 +73,11 @@ export default class App extends React.Component {
                 <div className="row">
                     <div className="col-md-6">
                         <h3>Simple To Do List</h3>
-                        <form onSubmit={this.__onClickSubmitItem}>
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <label htmlFor="item">Item</label>
-                                    <input autoComplete="off" type="text" className="form-control" id="item" name="item" value={this.state.item.text} onChange={this.__handleItemFieldChange} /> </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <div className="btn btn-md btn-success" id="submit-item" onClick={this.__onClickSubmitItem}>Submit</div>
-                                </div>
-                            </div>
-                        </form>
+                        <Form
+                            item={this.state.item}
+                            handleItemFieldChange={this.__handleItemFieldChange}
+                            onClickSubmitItem={this.__onClickSubmitItem}
+                        />
                     </div>
                 </div>
                 <div className="row">
