@@ -1,12 +1,26 @@
 import React from 'react';
-import Item from './Item.jsx';
+import PropTypes from 'prop-types';
+import ItemTodo from '../containers/ItemTodo.js';
 
-export default class List extends React.Component {
+class List extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            filter: this.props.filter
+        }
+    }
+
     render() {
         return(
             <ul id="list-item">
-                { this.props.todoList.map((item, index) => { return <Item toggleMark={this.props.toggleMark} removeItem={this.props.removeItem} key={index} item={item} /> })}
+                { this.props.todos.filter(this.props.filter).map((item, index) => { return <ItemTodo key={index} item={item} /> })}
             </ul>
         )
     }
 }
+
+List.propTypes = {
+    todos: PropTypes.array.isRequired
+}
+
+export default List

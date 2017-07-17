@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class Item extends React.Component {
+class Item extends React.Component {
     render() {
         return(
             <li className="item">
@@ -14,3 +15,11 @@ export default class Item extends React.Component {
         )
     }
 }
+
+Item.propTypes = {
+    item: PropTypes.object.isRequired,
+    toggleMark: PropTypes.func.isRequired,
+    removeItem: PropTypes.func.isRequired
+}
+
+export default Item;
